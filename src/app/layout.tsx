@@ -1,14 +1,13 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { DM_Sans } from "next/font/google";
 import "./globals.css";
-import { ClerkProvider } from "@clerk/nextjs";
-import { dark } from "@clerk/themes";
+import RootProviders from "@/providers";
 
-const inter = Inter({ subsets: ["latin"] });
+const font = DM_Sans({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Convex",
-  description: "Manage your agency with Convex",
+  description: "Manage your agency with Convex. An All-in-one solution for you",
 };
 
 export default function RootLayout({
@@ -17,10 +16,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider appearance={{ baseTheme: dark }}>
-      <html lang="en">
-        <body className={inter.className}>{children}</body>
-      </html>
-    </ClerkProvider>
+    <html lang="en" suppressHydrationWarning>
+      <body className={font.className}>
+        <RootProviders>{children}</RootProviders>
+      </body>
+    </html>
   );
 }

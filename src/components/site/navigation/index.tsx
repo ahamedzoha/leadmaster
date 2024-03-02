@@ -1,3 +1,5 @@
+import { ModeToggle } from "@/components/global/mode-toggle.component";
+import { UserButton } from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
 import { FC } from "react";
@@ -25,6 +27,16 @@ const NavBar: FC<INavBarProps> = ({ user }) => {
           <Link href="/dashboard">Features</Link>
         </ul>
       </nav>
+      <aside className="flex gap-2 items-center">
+        <Link
+          className="bg-primary text-white px-4 py-2 rounded-md hover:bg-primary/80 transition-all"
+          href="/agency"
+        >
+          Log In
+        </Link>
+        <UserButton />
+        <ModeToggle />
+      </aside>
     </div>
   );
 };
